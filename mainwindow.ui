@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>709</width>
+    <height>488</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QGraphicsView" name="graphicsView">
+      <property name="cursor" stdset="0">
+       <cursorShape>CrossCursor</cursorShape>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="2" column="0">
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Нарисовать остановки</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Очистить экран</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLineEdit" name="lineEdit"/>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="maximumSize">
+           <size>
+            <width>380</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>ArrowCursor</cursorShape>
+          </property>
+          <property name="mouseTracking">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Введите количество остановок (включая старт и финиш)</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>13</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Старт</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_2">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>379</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>379</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Финиш</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_4">
+          <property name="minimumSize">
+           <size>
+            <width>379</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>379</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Список остановок</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_3">
+          <property name="maximumSize">
+           <size>
+            <width>379</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="maximumSize">
+           <size>
+            <width>379</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Рассчитать</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>709</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Поиск кратчайшего пути между двумя состановками</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="action_9"/>
+   </widget>
+   <addaction name="menu_2"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="action">
+   <property name="text">
+    <string>выводить на отдельном экране весь граф</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>написать для точек отдельный класс</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>по нажатию на кнопку выбирать точку</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>писать вес рядом с ребром</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>сделать красивое вводное меню</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>переназвать все что тут есть</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>добавить логику</string>
+   </property>
+  </action>
+  <action name="action_8">
+   <property name="text">
+    <string>сделать красивый граф интерфейс</string>
+   </property>
+  </action>
+  <action name="action_11">
+   <property name="text">
+    <string>баги:</string>
+   </property>
+  </action>
+  <action name="action_12">
+   <property name="text">
+    <string>при двойном нажатиии на &quot;ввод&quot; при одинаковых значениях</string>
+   </property>
+  </action>
+  <action name="action_13">
+   <property name="text">
+    <string>граф копируется и считываются 2-е нажатия</string>
+   </property>
+  </action>
+  <action name="action_14">
+   <property name="text">
+    <string>при двойном нажатиии на &quot;ввод&quot; при одинаковых значениях</string>
+   </property>
+  </action>
+  <action name="action_15">
+   <property name="text">
+    <string>граф копируется и считываются 2-е нажатия</string>
+   </property>
+  </action>
+  <action name="action_17">
+   <property name="text">
+    <string>всплывающее окно прокликивается</string>
+   </property>
+  </action>
+  <action name="action_18">
+   <property name="text">
+    <string>сделать проверку вводимых значений</string>
+   </property>
+  </action>
+  <action name="action_9">
+   <property name="text">
+    <string>Ква мем пасхалка</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
