@@ -60,7 +60,6 @@ private:
     int *visited_peaks;//посещенные вершины
     int start; // старт
     int end;
-    int sum_step = 0;
 
     void way_back();
 };
