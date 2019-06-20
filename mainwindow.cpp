@@ -179,7 +179,7 @@ void MainWindow::way_back(){
 
     for (int i = previous - 1; i >=0; i--){
         QGraphicsLineItem *reline = new QGraphicsLineItem;
-        reline->setPen(QPen(Qt::green, 2));
+        reline->setPen(QPen(Qt::black, 2));
         for(int j = 0; j < quantity_line; j++){
             if ((line[j]->Get_number_ellips1() == visited_peaks[i] &&
                     line[j]->Get_number_ellips2() == visited_peaks[i-1])
