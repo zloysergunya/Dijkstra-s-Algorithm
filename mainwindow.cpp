@@ -171,7 +171,7 @@ void MainWindow::way_back(){
     QString shag;
     for (int i = previous - 1; i >= 0; i--) {
         shag += QString::number(visited_peaks[i]) + " ";
-        sum_step = min_distance[visited_peaks[i]];
+        sum_step = min_distance[visited_peaks[i] - 1];
         }
     ui->lineEdit_3->setText(shag);
 
