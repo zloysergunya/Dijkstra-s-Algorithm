@@ -114,7 +114,8 @@ void MainWindow::no_quantity(){
 // Здесь находится вся логика программы (опционально изменяется)
 void MainWindow::logic_alg_dix(){
     QString start_point = ui->lineEdit_2->text();
-    start = (start_point).toInt() - 1;
+    start = start_point.toInt() - 1;
+
     //инициализация массива весов вершин
     min_distance = new int[quantity_peaks];
     visited = new bool[quantity_peaks];
@@ -140,8 +141,6 @@ void MainWindow::logic_alg_dix(){
                     min_distance[i] = min_distance[index] + matrix[index][i];
         }
 
-    // ui->lineEdit_2->setText("");
-    // ui->lineEdit_2->setText(QString::number(min_distance[colvo-1]));
     way_back();
 }
 
@@ -158,6 +157,7 @@ void MainWindow::way_back(){
             if (matrix[end][i] != 0) { // если связь есть
                 int temp = weight - matrix[end][i]; // определяем вес пути из предыдущей вершины
                 if (temp == min_distance[i]) {  // если вес совпал с рассчитанным, значит из этой вершины и был переход
+                    sum_step += temp;
                     weight = temp; // сохраняем новый вес
                     end = i;       // сохраняем предыдущую вершину
                     visited_peaks[previous] = i + 1; // и записываем ее в массив
