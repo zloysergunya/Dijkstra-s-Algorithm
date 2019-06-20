@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
 
     //счетчик нажатий
-    quantity = 0;
+    quantity_click = 0;
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     //конектим кнопку
@@ -83,31 +83,35 @@ void MainWindow::Graph_See(){
 
 //считываем клики и отдаем сигнал на всплывающее окно запросов
 void MainWindow::push_graph(double p1, double p2, int n){
-    coord[quantity] = QPoint(p1, p2);//записываем координаты кликов и по ним строим линию
-    number_elips[quantity] = n;//еще записываем номера элипсов которые выбрали
-    ++quantity;
-    if(quantity % 2 == 0){
+    coord[quantity_click] = QPoint(p1, p2);//записываем координаты кликов и по ним строим линию
+    number_elips[quantity_click] = n;//еще записываем номера элипсов которые выбрали
+    ++quantity_click;
+    if(quantity_click % 2 == 0){
         emit Create_line(number_elips[0], number_elips[1]);
     }
 }
 
 //заполняем наш массив весов и чертим линию
 void MainWindow::form_arr_mass(int n1, int n2, int mass){
-    matrix[n1 - 1][n2 - 1] = mass;
-    matrix[n2 - 1][n1 - 1] = mass;
-    line[quantity_line] = new MyLine_Line(QLineF(coord[0], coord[1]), n1, n2, mass);//создаем линию и записываем в массив линий
-    scene->addItem(line[quantity_line]);//добавляем линию на рабочее графическое поле
-    quantity_line++;
-    quantity = 0;
+    if (mass != 0 && n1 != n2) {
+        matrix[n1 - 1][n2 - 1] = mass;
+        matrix[n2 - 1][n1 - 1] = mass;
+        line[quantity_line] = new MyLine_Line(QLineF(coord[0], coord[1]), n1, n2, mass);//создаем линию и записываем в массив линий
+        scene->addItem(line[quantity_line]);//добавляем линию на рабочее графическое поле
+        quantity_line++;
+        quantity_click = 0;
+    }
+    else {
+        QMessageBox::warning(this, "Ошибка!", "Старайтесь не создавать петель и 0 весов!");
+    }
 }
 
 //обнуляем счетчик кликов при "отмена"
 void MainWindow::no_quantity(){
-    quantity = 0;
+    quantity_click = 0;
 }
 
-//сдесь находится вся логика программы (опционально изменяется)
-//из глобального сдесь используется количество точек и массив и выводится вес последнего элемента в поле вывода
+// Здесь находится вся логика программы (опционально изменяется)
 void MainWindow::logic_alg_dix(){
     QString start_point = ui->lineEdit_2->text();
     start = (start_point).toInt() - 1;
@@ -122,12 +126,10 @@ void MainWindow::logic_alg_dix(){
 
     int count, index = 0, i;
 
-    for (count = 0; count < quantity_peaks - 1; count++)
-        {
+    for (count = 0; count < quantity_peaks - 1; count++) {
             int min = INT_MAX;
             for (i = 0; i < quantity_peaks; i++)
-                if (!visited[i] && min_distance[i] <= min)
-                {
+                if (!visited[i] && min_distance[i] <= min) {
                     min = min_distance[i]; index = i;
                 }
 
@@ -169,8 +171,11 @@ void MainWindow::way_back(){
     QString shag;
     for (int i = previous - 1; i >= 0; i--) {
         shag += QString::number(visited_peaks[i]) + " ";
+        sum_step = min_distance[visited_peaks[i]];
         }
     ui->lineEdit_3->setText(shag);
+
+    QMessageBox::warning(this, "Сумма пути", "Расстояние от старта до финиша = " + QString::number(sum_step));
 
     for (int i = previous - 1; i >=0; i--){
         QGraphicsLineItem *reline = new QGraphicsLineItem;
@@ -193,6 +198,5 @@ void MainWindow::Delete_graph(){
     scene = new QGraphicsScene;
     ui->graphicsView->setScene(scene);
     quantity_line = 0;
-    quantity = 0;
-
+    quantity_click = 0;
 }
