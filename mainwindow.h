@@ -51,7 +51,7 @@ private:
     MyLine_Line **line;
     QPoint *coord;//массив координат элипсов которые выбранны в данный момент
 
-    int quantity;//счетчик кликов (2)
+    int quantity_click;//счетчик кликов (2)
     int quantity_line = 0;//ычетчик под количество линий
     int number_elips[2];//массив содержащий 2 номер элипса которые в данный момент участвуют в соединении
     int **matrix;//массив содержащий массы ребер
@@ -60,6 +60,7 @@ private:
     int *visited_peaks;//посещенные вершины
     int start; // старт
     int end;
+    int sum_step = 0;
 
     void way_back();
 };
