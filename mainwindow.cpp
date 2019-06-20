@@ -157,7 +157,6 @@ void MainWindow::way_back(){
             if (matrix[end][i] != 0) { // если связь есть
                 int temp = weight - matrix[end][i]; // определяем вес пути из предыдущей вершины
                 if (temp == min_distance[i]) {  // если вес совпал с рассчитанным, значит из этой вершины и был переход
-                    sum_step += temp;
                     weight = temp; // сохраняем новый вес
                     end = i;       // сохраняем предыдущую вершину
                     visited_peaks[previous] = i + 1; // и записываем ее в массив
